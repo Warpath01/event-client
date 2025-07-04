@@ -8,10 +8,9 @@ export default function Events() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token) {
-      api.get("/users/events").then((res) => setEvents(res.data));
+     api.get("/users/events").then((res) => setEvents(res.data));
         const token = localStorage.getItem('token');
-    
+    if (token) {
       api.get("/users/my-registrations")
         .then((res) => setRegisteredEvents(res.data))
         .catch((err) => console.error("Failed to fetch registrations:", err));
