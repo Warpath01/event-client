@@ -9,9 +9,12 @@ export default function Events() {
 
   useEffect(() => {
     api.get("/users/events").then((res) => setEvents(res.data));
-    api
-      .get("/users/my-registrations")
-      .then((res) => setRegisteredEvents(res.data));
+      const token = localStorage.getItem('token');
+  if (token) {
+    api.get("/users/my-registrations")
+      .then((res) => setRegisteredEvents(res.data))
+      .catch((err) => console.error("Failed to fetch registrations:", err));
+  }
   }, []);
 
   const registerEvent = async (id) => {
