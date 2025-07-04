@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://eventapp-server-eatp.onrender.com/api'
+    baseURL: 'https://myevent-server.vercel.app/api'
 });
 
 // Automatically attach token to every request
